@@ -1,7 +1,4 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.Scanner;
 
 /**
@@ -13,7 +10,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int testCases = scanner.nextInt();
         String delims = "[ ]+";
-        int numberOfSnakes, queries, currentQuery, largestSnakeLength = 0, numberOfPassingSnakes = 0;
+        int numberOfSnakes,  currentQuery, largestSnakeLength = 0, numberOfPassingSnakes = 0, queries = 0;
         int arrayListOffset = 0;
         ArrayList<Integer> nqArrayList = new ArrayList<>();
         ArrayList<Integer> snakeLengthsArrayList = new ArrayList<>();
@@ -25,15 +22,18 @@ public class Main {
             String snakeLengthsString = scanner.nextLine();
             String[] snakeLengthsArray = snakeLengthsString.split(delims);
 
-            for(String s : nqArray) {
-                nqArrayList.add(Integer.parseInt(s));
-            }
+            try {
+                for (String s : nqArray) {
+                    nqArrayList.add(Integer.parseInt(s));
+                }
 
-            numberOfSnakes = nqArrayList.get(0);
-            queries = nqArrayList.get(1);
+                queries = nqArrayList.get(1);
 
-            for(String s : snakeLengthsArray) {
-                snakeLengthsArrayList.add(Integer.parseInt(s));
+                for (String s : snakeLengthsArray) {
+                    snakeLengthsArrayList.add(Integer.parseInt(s));
+                }
+            }catch (NumberFormatException e) {
+                e.printStackTrace();
             }
 
             //For loop that ensures the program only activates for as many test cases there are
@@ -62,14 +62,12 @@ public class Main {
                     }
                     results.add(numberOfPassingSnakes);
                 }
-                currentQuery = 0;
                 arrayListOffset = 0;
                 numberOfPassingSnakes = 0;
             }
 
-            for(int i = 0; i < results.size(); i++) {
-                System.out.println(results.get(i));
-                System.out.println(results.get(i));
-            }
+        for(Integer i : results) {
+            System.out.println(results.get(i));
+        }
         }
     }
