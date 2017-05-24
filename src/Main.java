@@ -55,6 +55,7 @@ public class Main {
                     snakeLengthsArrayList.remove(i2);
                 }
             }
+            //Add a loop to find new largest snake
             for(int z = 0; z < snakeLengthsArrayList.size(); z++) {
                 if(z == 0) {
                     largestSnakeLength = snakeLengthsArrayList.get(0);
@@ -62,7 +63,7 @@ public class Main {
                 if(snakeLengthsArrayList.get(z) > largestSnakeLength) {
                     largestSnakeLength = snakeLengthsArrayList.get(z);
                 }
-                if(largestSnakeLength + (snakeLengthsArrayList.size() - 1) > currentQuery) {
+                if(largestSnakeLength + (snakeLengthsArrayList.size() - 1) >= currentQuery) {
 
                     //Need to add a loop that loops through the for loop but not the .remove(smallestSnakeLengthIndex) until the smallest snake has been found, eaten, and the process starts again
                     for(int z2 = 0; z < snakeLengthsArrayList.size(); z++) {
