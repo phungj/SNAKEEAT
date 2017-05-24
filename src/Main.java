@@ -2,14 +2,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  * Created by jmanrocks152 on 5/22/17.
  */
 public class Main {
-    private static int numberOfSnakes,  currentQuery, largestSnakeLength = 0, numberOfPassingSnakes = 0, queries = 0;
+    private static int  currentQuery, smallestSnakeLengthIndex, largestSnakeLength = 0, smallestSnakeLength = 0, numberOfPassingSnakes = 0, queries = 0;
 
     public static void main(String[] args) throws IOException {
         //Variable initialization
@@ -65,6 +63,21 @@ public class Main {
                     largestSnakeLength = snakeLengthsArrayList.get(z);
                 }
                 if(largestSnakeLength + (snakeLengthsArrayList.size() - 1) > currentQuery) {
+
+                    //Need to add a loop that loops through the for loop but not the .remove(smallestSnakeLengthIndex) until the smallest snake has been found, eaten, and the process starts again
+                    for(int z2 = 0; z < snakeLengthsArrayList.size(); z++) {
+                        if(z2 == 0) {
+                            smallestSnakeLength = snakeLengthsArrayList.get(0);
+                            smallestSnakeLengthIndex = 0;
+                        }
+                        if(snakeLengthsArrayList.get(z2) < smallestSnakeLength) {
+                            smallestSnakeLength = snakeLengthsArrayList.get(z);
+                            smallestSnakeLengthIndex = z2;
+                        }
+
+                    }
+                    //Need to put this into a while loop or something that only increments numberOfPassingSnakes when largestSnakeLength is greater than currentQuery, as well as finding a way to add the remove smallestSnakeLengthInder in the loop but not in the for loop
+                    snakeLengthsArrayList.remove(smallestSnakeLengthIndex);
                     numberOfPassingSnakes++;
                 }
             }
